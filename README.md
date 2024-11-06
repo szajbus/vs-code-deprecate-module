@@ -1,4 +1,4 @@
-# deprecate-module README
+# deprecate-module
 
 Adds *Deprecate module* command to right-click menu in Explorer.
 
