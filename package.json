@@ -4,7 +4,7 @@
   "description": "",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.95.0"
+    "vscode": "^1.93.0"
   },
   "categories": [
     "Other"
@@ -14,10 +14,19 @@
   "contributes": {
     "commands": [
       {
-        "command": "deprecate-module.helloWorld",
-        "title": "Hello World"
+        "command": "deprecate-module.deprecateFile",
+        "title": "Deprecate module"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "deprecate-module.deprecateFile",
+          "group": "1_modification",
+          "when": "!explorerResourceIsFolder && resourceScheme == file && (resourceExtname == .ex || resourceFilename =~ /_test\\.exs$/)"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -28,7 +37,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.95.0",
+    "@types/vscode": "^1.93.0",
     "@types/mocha": "^10.0.9",
     "@types/node": "20.x",
     "@typescript-eslint/eslint-plugin": "^8.10.0",
@@ -37,5 +46,10 @@
     "typescript": "^5.6.3",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/szajbus/vs-code-deprecate-module.git"
+  },
+  "publisher": "szajbus"
 }
