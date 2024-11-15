@@ -2,7 +2,7 @@
   "name": "deprecate-module",
   "displayName": "deprecate-module",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.93.0"
   },
@@ -14,15 +14,24 @@
   "contributes": {
     "commands": [
       {
-        "command": "deprecate-module.deprecateFile",
+        "command": "deprecate-module.deprecateModule",
         "title": "Deprecate module"
+      },
+      {
+        "command": "deprecate-module.deprecateModuleAs",
+        "title": "Deprecate module as..."
       }
     ],
     "menus": {
       "explorer/context": [
         {
-          "command": "deprecate-module.deprecateFile",
-          "group": "1_modification",
+          "command": "deprecate-module.deprecateModule",
+          "group": "1_modification@1",
+          "when": "!explorerResourceIsFolder && resourceScheme == file && (resourceExtname == .ex || resourceFilename =~ /_test\\.exs$/)"
+        },
+        {
+          "command": "deprecate-module.deprecateModuleAs",
+          "group": "1_modification@2",
           "when": "!explorerResourceIsFolder && resourceScheme == file && (resourceExtname == .ex || resourceFilename =~ /_test\\.exs$/)"
         }
       ]
@@ -34,7 +43,8 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "package": "vsce package"
   },
   "devDependencies": {
     "@types/vscode": "^1.93.0",
